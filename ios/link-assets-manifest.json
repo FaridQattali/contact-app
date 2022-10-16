@@ -1,0 +1,17 @@
+{
+  "migIndex": 1,
+  "data": [
+    {
+      "path": "assets/fonts/DimaFantasy.ttf",
+      "sha1": "b05ec3664f57605efca35a925390efa17632994a"
+    },
+    {
+      "path": "assets/fonts/IRANSans.ttf",
+      "sha1": "d3421fa90725d0a6672daea22a6e89234e00bff2"
+    },
+    {
+      "path": "assets/fonts/IRANSans_Medium.ttf",
+      "sha1": "1a0e07a939733fd691fc6f5bc13edb3ca3a8da19"
+    }
+  ]
+}
