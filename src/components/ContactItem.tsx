@@ -1,11 +1,5 @@
 import React from 'react';
-import {
-  View,
-  Image,
-  TouchableWithoutFeedback,
-  StyleSheet,
-  Linking,
-} from 'react-native';
+import {View, TouchableWithoutFeedback, Image, StyleSheet} from 'react-native';
 import Clipboard from '@react-native-clipboard/clipboard';
 import {useToast} from 'react-native-toast-notifications';
 
@@ -15,11 +9,12 @@ import {Text} from '../components';
 type Props = {
   firstname: string;
   lastname: string;
+  position: string;
   phone: string;
-  image: string;
+  image: string | number;
 };
 
-const ContactItem = ({firstname, lastname, phone, image}: Props) => {
+const ContactItem = ({firstname, lastname, position, phone, image}: Props) => {
   const toast = useToast();
 
   const onCopyPress = async () => {
@@ -29,34 +24,17 @@ const ContactItem = ({firstname, lastname, phone, image}: Props) => {
     });
   };
 
-  const onPhonePress = () => {
-    Linking.openURL(`tel:${phone}`);
-  };
-
-  const onSmsPress = () => {
-    Linking.openURL(`sms:${phone}`);
-  };
-
   return (
     <TouchableWithoutFeedback>
       <View style={[styles.row, styles.container]}>
         <View style={styles.row}>
-          <View
-            style={{
-              borderColor: '#0195B5',
-              borderWidth: 2,
-              borderRadius: 1000,
-              marginRight: 10,
-            }}>
-            <Image
-              source={require('../../assets/images/profile.png')}
-              style={styles.image}
-            />
+          <View style={styles.imageContainer}>
+            <Image source={image} style={styles.image} />
           </View>
           <View>
             <View>
-              <Text>
-                {firstname} {lastname}
+              <Text fontSize={14}>
+                {firstname} {lastname} ({position})
               </Text>
             </View>
             <Text fontSize={13}>{phone}</Text>
@@ -84,6 +62,12 @@ const styles = StyleSheet.create({
     padding: 10,
     marginHorizontal: 10,
     marginVertical: 5,
+  },
+  imageContainer: {
+    borderColor: '#0195B5',
+    borderWidth: 2,
+    borderRadius: 1000,
+    marginRight: 10,
   },
   image: {
     width: 47,
