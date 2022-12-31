@@ -8,7 +8,7 @@ import {
 import {SwipeListView} from 'react-native-swipe-list-view';
 
 import {ContactItem, ContactListHeader, EmptyContactList} from '../components';
-import data from '../data/contacts.json';
+import {data} from '../data/contacts';
 import {PhoneIcon, SmsIcon} from '../components/icons';
 
 const ContactList = () => {
@@ -22,6 +22,7 @@ const ContactList = () => {
         contact =>
           contact.firstname.includes(searchTerm) ||
           contact.lastname.includes(searchTerm) ||
+          contact.position.includes(searchTerm) ||
           contact.phone.includes(searchTerm),
       );
       setContacts(filteredContacts);
@@ -72,6 +73,7 @@ const ContactList = () => {
             firstname={data.item.firstname}
             lastname={data.item.lastname}
             phone={data.item.phone}
+            position={data.item.position}
             image={data.item.image}
           />
         )}
